@@ -64,7 +64,7 @@ namespace Flexinets.Radius.Core
                     }
                 }
 
-                _logger.LogInformation($"Parsed {Attributes.Count} attributes and {VendorSpecificAttributes.Count} vendor attributes from file");
+                _logger?.LogInformation($"Parsed {Attributes.Count} attributes and {VendorSpecificAttributes.Count} vendor attributes from file");
             }
         }
 
