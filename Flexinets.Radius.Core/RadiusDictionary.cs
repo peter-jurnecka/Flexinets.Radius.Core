@@ -19,14 +19,14 @@ namespace Flexinets.Radius.Core
         /// </summary>        
         public RadiusDictionary(string dictionaryFilePath, ILogger<RadiusDictionary> logger)
         {
-            _logger = logger;
+            this._logger = logger!;
 
             using (var sr = new StreamReader(dictionaryFilePath))
             {
                 while (sr.Peek() >= 0)
                 {
                     var line = sr.ReadLine();
-                    if (line.StartsWith("Attribute"))
+                    if (line?.StartsWith("Attribute") == true)
                     {
                         var lineparts = line.Split(new char[] { '\t', ' ' }, StringSplitOptions.RemoveEmptyEntries);
                         var key = Convert.ToByte(lineparts[1]);
@@ -45,7 +45,7 @@ namespace Flexinets.Radius.Core
                         AttributeNames.Add(attributeDefinition.Name, attributeDefinition);
                     }
 
-                    if (line.StartsWith("VendorSpecificAttribute"))
+                    if (line?.StartsWith("VendorSpecificAttribute") == true)
                     {
                         var lineparts = line.Split(new char[] { '\t', ' ' }, StringSplitOptions.RemoveEmptyEntries);
                         var vsa = new DictionaryVendorAttribute(
@@ -69,7 +69,7 @@ namespace Flexinets.Radius.Core
         }
 
 
-        public DictionaryVendorAttribute GetVendorAttribute(uint vendorId, byte vendorCode)
+        public DictionaryVendorAttribute? GetVendorAttribute(uint vendorId, byte vendorCode)
         {
             return VendorSpecificAttributes.FirstOrDefault(o => o.VendorId == vendorId && o.VendorCode == vendorCode);
         }
@@ -79,7 +79,7 @@ namespace Flexinets.Radius.Core
             return Attributes[typecode];
         }
 
-        public DictionaryAttribute GetAttribute(string name)
+        public DictionaryAttribute? GetAttribute(string name)
         {
             AttributeNames.TryGetValue(name, out var attributeType);
             return attributeType;

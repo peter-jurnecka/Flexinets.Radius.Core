@@ -8,7 +8,7 @@
         /// <param name="vendorId"></param>
         /// <param name="vendorCode"></param>
         /// <returns></returns>
-        DictionaryVendorAttribute GetVendorAttribute(uint vendorId, byte vendorCode);
+        DictionaryVendorAttribute? GetVendorAttribute(uint vendorId, byte vendorCode);
 
 
         /// <summary>
@@ -16,7 +16,7 @@
         /// </summary>
         /// <param name="code"></param>
         /// <returns></returns>
-        DictionaryAttribute GetAttribute(byte code);
+        DictionaryAttribute? GetAttribute(byte code);
 
 
         /// <summary>
@@ -24,6 +24,6 @@
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        DictionaryAttribute GetAttribute(string name);
+        DictionaryAttribute? GetAttribute(string name);
     }
 }

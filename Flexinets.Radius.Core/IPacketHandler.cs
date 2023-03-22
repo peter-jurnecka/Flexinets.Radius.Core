@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace Flexinets.Radius.Core
 {
     public interface IPacketHandler : IDisposable
     {
-        IRadiusPacket HandlePacket(IRadiusPacket packet);
+        Task<IRadiusPacket?> HandlePacket(IRadiusPacket packet);
     }
 }
