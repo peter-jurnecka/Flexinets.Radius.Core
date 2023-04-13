@@ -22,6 +22,10 @@
     <PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
   </ItemGroup>
 
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">   
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Update="Content\radius.dictionary">
       <PackageCopyToOutput>true</PackageCopyToOutput>
